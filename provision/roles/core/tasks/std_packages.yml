@@ -2,7 +2,6 @@
 - name: Install core standard packages
   apt: pkg={{ item }}
   with_items:
-    - synergy
     - synaptic
     - nautilus-open-terminal
     - nautilus-wipe
@@ -18,7 +17,6 @@
     - p7zip-full
     - dconf-tools
     - lftp
-    - sshfs
     - autojump
     - gksu
     - cifs-utils
