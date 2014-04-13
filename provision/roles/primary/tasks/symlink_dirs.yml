@@ -3,31 +3,37 @@
 - name: stat Music dir
   stat: path=~/Music
   register: st
-- debug: msg="Music folder is Exists; {{ st.stat.exists }} | isDir; {{ st.stat.isdir }}"
+- debug: msg="Music folder Exists; {{ st.stat.exists }}"
+- debug: msg="Music folder isDir; {{ st.stat.isdir }}"
+  when: st.stat.exists
 - name: Delete the original Music folder
   file: state=absent path="~/Music"
   when: st.stat.exists and st.stat.isdir
 - name: Music symlink
-  file: state=link path="~/Music" src="/media/data/Music"
+  file: state=link path="~/Music" src="{{ musicdir }}"
 
 #Pictures
 - name: stat Pictures dir
   stat: path=~/Pictures
   register: st
-- debug: msg="Pictures folder is Exists; {{ st.stat.exists }} | isDir; {{ st.stat.isdir }}"
+- debug: msg="Pictures folder Exists; {{ st.stat.exists }}"
+- debug: msg="Pictures folder isDir; {{ st.stat.isdir }}"
+  when: st.stat.exists
 - name: Delete the original Pictures folder
   file: state=absent path="~/Pictures"
   when: st.stat.exists and st.stat.isdir
 - name: Pictures symlink
-  file: state=link path="~/Pictures" src="/media/data/Pictures"
+  file: state=link path="~/Pictures" src="{{ picturesdir }}"
 
 #Videos
 - name: stat Videos dir
   stat: path=~/Videos
   register: st
-- debug: msg="Videos folder is Exists; {{ st.stat.exists }} | isDir; {{ st.stat.isdir }}"
+- debug: msg="Videos folder Exists; {{ st.stat.exists }}"
+- debug: msg="Videos folder isDir; {{ st.stat.isdir }}"
+  when: st.stat.exists
 - name: Delete the original Videos folder
   file: state=absent path="~/Videos"
   when: st.stat.exists and st.stat.isdir
 - name: Videos symlink
-  file: state=link path="~/Videos" src="/media/data/Videos"
+  file: state=link path="~/Videos" src="{{ videosdir }}"

@@ -3,5 +3,10 @@
 
 [local:vars]
 user=ezra
+
 gitname=Ezra Parker
 gitemail=ezra@cfgrok.com
+
+musicdir=/media/data/Music
+picturesdir=/media/data/Pictures
+videosdir=/media/data/Videos

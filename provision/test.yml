@@ -3,4 +3,4 @@
   connection: local
   user: "{{ local.user }}"
   tasks:
-    - include: roles/core/tasks/_git_config.yml
+    - include: roles/primary/tasks/symlink_dirs.yml
