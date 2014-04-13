@@ -1,0 +1,6 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  user: "{{ local.user }}"
+  tasks:
+    - include: roles/core/tasks/_git_config.yml
