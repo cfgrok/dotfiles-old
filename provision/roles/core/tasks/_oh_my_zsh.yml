@@ -7,7 +7,7 @@
   apt: pkg=zsh
   sudo: yes
 - name: zshrc config
-  copy: src=zshrc dest=~/.zshrc
+  template: src=zshrc dest=~/.zshrc
 - name: install oh my zsh
   shell: wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
   when: (not zsh_installed.stdout)
