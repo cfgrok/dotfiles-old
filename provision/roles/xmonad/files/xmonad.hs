@@ -42,20 +42,20 @@ myScratchpads =
 
 myXPConfig = defaultXPConfig
 	{
-		font = "xft: ubuntu-mono-10"
+		font = "xft: ubuntu-mono-16"
 		,promptBorderWidth = 0
 	}
 
-myDemuConfig = " -l 20 -fn ubuntu-mono-10 "
+myDemuConfig = " -l 20 -fn ubuntu-mono-16 "
 
 -- general keysimport XMonad.Prompt
 myKeys =
 	[  
 	((myModKey, xK_p), spawn ("dmenu_run" ++ myDemuConfig)) 
-	, ((myModKey .|. shiftMask, xK_p), spawn ("p=`echo '' | dmenu -fn ubuntu-mono-10 -p 'Open File:'` && d=`locate $p | dmenu" ++ myDemuConfig ++ "` && gnome-open \"$d\""))
-	, ((myModKey, xK_g), gotoMenuArgs ["-fn", "ubuntu-mono-10", "-l", "20"])
+	, ((myModKey .|. shiftMask, xK_p), spawn ("p=`echo '' | dmenu -fn ubuntu-mono-16 -p 'Open File:'` && d=`locate $p | dmenu" ++ myDemuConfig ++ "` && gnome-open \"$d\""))
+	, ((myModKey, xK_g), gotoMenuArgs ["-fn", "ubuntu-mono-16", "-l", "20"])
 	, ((myModKey .|. shiftMask, xK_g), goToSelected defaultGSConfig)
-	, ((myModKey .|. shiftMask, xK_b), bringMenuArgs ["-fn", "ubuntu-mono-10", "-l", "20"])
+	, ((myModKey .|. shiftMask, xK_b), bringMenuArgs ["-fn", "ubuntu-mono-16", "-l", "20"])
 	, ((myModKey, xK_grave), cycleRecentWS [xK_Super_L] xK_grave xK_grave)
     	-- close focused window
 	, ((myModKey, xK_x), kill)
