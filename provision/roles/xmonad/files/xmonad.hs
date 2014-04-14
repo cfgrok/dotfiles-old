@@ -7,7 +7,6 @@ import XMonad.Actions.DynamicWorkspaceGroups
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedScratchpad
@@ -59,7 +58,7 @@ myKeys =
 	, ((myModKey, xK_grave), cycleRecentWS [xK_Super_L] xK_grave xK_grave)
     	-- close focused window
 	, ((myModKey, xK_x), kill)
-	, ((mod1Mask, xK_F3), spawn "mono /usr/lib/keepass2/KeePass.exe --auto-type")
+	, ((mod1Mask, xK_F3), spawn "/usr/bin/keepass2 --auto-type")
 	]
 	++
 	-- make the 0 button go to the 0 worksapce
@@ -103,7 +102,7 @@ myManageHook =
 		appName =? "sun-awt-X11-XWindowPeer" <&&> className =? "jetbrains-idea" --> doIgnore
 	]
 
-main = xmonad $ ewmh gnomeConfig {
+main = xmonad $ gnomeConfig {
 	modMask = myModKey
 	, terminal = myTerminal
 	, focusedBorderColor = "#008db8"
