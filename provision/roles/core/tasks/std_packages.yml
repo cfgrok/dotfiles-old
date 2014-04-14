@@ -24,5 +24,6 @@
     - gnome-nettool
     - vlc
     - retext
-    - nfs-common
     - vim
+    - indicator-multiload
+    - virtualbox
