@@ -37,7 +37,7 @@ plugins=(git bundler debian git-extras rvm gem tmux lein vagrant colored-man aut
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/home/{{ user }}/.rvm/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+export PATH=$PATH:/home/{{ user }}/.rvm/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 if [ -f ~/.rvm/scripts/rvm ]; then
     . ~/.rvm/scripts/rvm
