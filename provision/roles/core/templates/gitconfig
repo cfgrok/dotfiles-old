@@ -6,18 +6,27 @@
         tool = meld
 [difftool]
         prompt = false
+#[difftool "sublime"]
+#        cmd = sublime $LOCAL $REMOTE
+#        trustExitCode = false
 [merge]
         tool = meld
 [mergetool]
         keepBackup = false
         prompt = false
+#[mergetool "sublime"]
+#        cmd = sublime -w $MERGED
+#        trustExitCode = false
 [alias]
         co = checkout
         ci = commit
         br = branch
         st = status
-        oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+        dt = difftool
+        oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
         branchdiff = !bash -c \"git diff `git oldest-ancestor`..\"
         branchlog = !bash -c \"git log `git oldest-ancestor`..\"
 [push]
 	default = tracking
+[core]
+	editor = vim

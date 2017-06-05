@@ -25,8 +25,8 @@ numPadKeys = [ xK_KP_End,  xK_KP_Down,  xK_KP_Page_Down -- 1, 2, 3
              , xK_KP_Insert] -- 0
 
 isTermScratchPad = (className =? "term-scratch")
-isKeepass = (className =? "KeePass2")
-isGuayadeque = (className =? "Guayadeque")
+isKeepass = (className =? "Keepassx")
+isNightingale = (className =? "Nightingale")
 
 myTmuxCommand = "tmux -2 new"
 myScratchCommand = "gnome-terminal --disable-factory --class=term-scratch --window-with-profile=Scratchpad -e '" ++ myTmuxCommand ++ "'"
@@ -34,9 +34,9 @@ myTerminal = "gnome-terminal -e '" ++ myTmuxCommand ++ "'"
 
 myScratchpads = 
 	[
-		NS "keepass2" "keepass2" isKeepass nonFloating
+		NS "keepassx" "keepassx" isKeepass nonFloating
 		, NS "terminal" myScratchCommand isTermScratchPad nonFloating
-		, NS "guayadeque" "guayadeque" isGuayadeque nonFloating
+		, NS "nightingale" "nightingale" isNightingale nonFloating
 	]
 
 myXPConfig = defaultXPConfig
@@ -55,10 +55,9 @@ myKeys =
 	, ((myModKey, xK_g), gotoMenuArgs ["-fn", "ubuntu-mono-16", "-l", "20"])
 	, ((myModKey .|. shiftMask, xK_g), goToSelected defaultGSConfig)
 	, ((myModKey .|. shiftMask, xK_b), bringMenuArgs ["-fn", "ubuntu-mono-16", "-l", "20"])
-	, ((myModKey, xK_grave), cycleRecentWS [xK_Super_L] xK_grave xK_grave)
+	-- , ((myModKey, xK_grave), cycleRecentWS [xK_Super_L] xK_grave xK_grave)
     	-- close focused window
 	, ((myModKey, xK_x), kill)
-	, ((mod1Mask, xK_F3), spawn "/usr/bin/keepass2 --auto-type")
 	]
 	++
 	-- make the 0 button go to the 0 worksapce
@@ -75,15 +74,15 @@ myKeys =
 	++
 	-- named scratch pads
 	[
-		((myModKey .|. controlMask, xK_k), namedScratchpadAction myScratchpads "keepass2")
+		((myModKey .|. controlMask, xK_k), namedScratchpadAction myScratchpads "keepassx")
 		,((myModKey, xK_F12), namedScratchpadAction myScratchpads "terminal")
-		,((myModKey, xK_F3), namedScratchpadAction myScratchpads "guayadeque")
+		,((myModKey, xK_F3), namedScratchpadAction myScratchpads "nightingale")
 	]
 	-- dynamic workspace groups
 	++
 	[
 		((myModKey .|. controlMask, xK_a), promptWSGroupAdd myXPConfig "Name this group: ")
-		, ((myModKey, xK_m), promptWSGroupView myXPConfig "Go to group: ")
+		, ((myModKey, xK_b), promptWSGroupView myXPConfig "Go to group: ")
 		, ((myModKey .|. controlMask, xK_f), promptWSGroupForget myXPConfig "Forget group: ")
 	]
 
@@ -92,7 +91,7 @@ myManageHook =
 		isFullscreen --> doFullFloat
 		,isTermScratchPad --> doFloat
 		,isKeepass --> doCenterFloat
-		,isGuayadeque --> doCenterFloat
+		,isNightingale --> doCenterFloat
 		,(className =? "Zenity") --> doCenterFloat
 	]
 	-- IntelliJ Tweaks
